@@ -284,46 +284,6 @@
   color: #facc15;
 }
 
-/* ─── Legend ─── */
-.legend {
-  margin-top: 10px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 255, 255, 0.025);
-}
-
-.legend-title {
-  font-size: clamp(9px, 2.2vw, 10px);
-  letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.15);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
-
-.legend-items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 14px;
-  font-size: clamp(10px, 2.5vw, 12px);
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.legend-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.legend-text {
-  color: rgba(255, 255, 255, 0.3);
-}
 
 /* ─── Coming soon ─── */
 .coming-soon {

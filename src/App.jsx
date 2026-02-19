@@ -3,7 +3,6 @@ import "./App.css";
 import scenarios from "./data/index";
 import FieldView from "./components/FieldView";
 import PhaseNav from "./components/PhaseNav";
-import Legend from "./components/Legend";
 import ScenarioMenu from "./components/ScenarioMenu";
 
 const TABS = [
@@ -83,8 +82,6 @@ export default function App() {
                 <span className="phase-desc-label">Fase {ph + 1}: </span>{p.desc}
               </div>
             )}
-
-            <Legend />
           </>
         ) : (
           <div className="coming-soon">
