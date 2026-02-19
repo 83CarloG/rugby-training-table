@@ -28,10 +28,14 @@
 
 /* ─── Header ─── */
 .app-header {
-  text-align: center;
-  padding: 8px 8px 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px 6px;
   max-width: 940px;
   margin: 0 auto;
+  min-height: 40px;
 }
 
 .header-label {
@@ -39,6 +43,27 @@
   letter-spacing: 3px;
   color: #4ade80;
   text-transform: uppercase;
+}
+
+.header-back {
+  position: absolute;
+  left: 8px;
+  background: none;
+  border: none;
+  color: #4ade80;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-family: 'JetBrains Mono', 'SF Mono', monospace;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  opacity: 0.8;
+  transition: opacity 0.15s ease;
+}
+
+.header-back:active {
+  opacity: 1;
 }
 
 /* ─── Scenario menu ─── */
@@ -284,6 +309,121 @@
   color: #facc15;
 }
 
+
+/* ─── Home menu ─── */
+.home-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 50px);
+  padding: 0 16px 40px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 52px 16px 44px;
+  text-align: center;
+}
+
+.home-badge {
+  font-size: clamp(9px, 2.2vw, 10px);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(74, 222, 128, 0.55);
+  margin-bottom: 14px;
+}
+
+.home-title {
+  font-size: clamp(52px, 16vw, 88px);
+  font-weight: 800;
+  margin: 0 0 12px;
+  background: linear-gradient(135deg, #4ade80 0%, #22d3ee 55%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.home-sub {
+  font-size: clamp(11px, 2.8vw, 13px);
+  color: rgba(255, 255, 255, 0.22);
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.home-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.home-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  text-align: left;
+  color: #dce8df;
+  font-family: 'JetBrains Mono', 'SF Mono', monospace;
+  width: 100%;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.home-card:active {
+  transform: scale(0.98);
+}
+
+.home-card--primary {
+  background: rgba(74, 222, 128, 0.06);
+  border-color: rgba(74, 222, 128, 0.18);
+}
+
+.home-card--primary:active {
+  background: rgba(74, 222, 128, 0.1);
+}
+
+.home-card--muted {
+  opacity: 0.55;
+}
+
+.home-card-icon {
+  font-size: 34px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.home-card-body {
+  flex: 1;
+}
+
+.home-card-label {
+  font-size: clamp(17px, 5vw, 22px);
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.home-card-desc {
+  font-size: clamp(10px, 2.5vw, 12px);
+  color: rgba(255, 255, 255, 0.32);
+}
+
+.home-card-arrow {
+  font-size: 26px;
+  color: rgba(255, 255, 255, 0.18);
+  flex-shrink: 0;
+  font-weight: 300;
+  line-height: 1;
+}
 
 /* ─── Coming soon ─── */
 .coming-soon {
