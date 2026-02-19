@@ -5,6 +5,7 @@ import FieldView from "./components/FieldView";
 import PhaseNav from "./components/PhaseNav";
 import ScenarioMenu from "./components/ScenarioMenu";
 import HomeMenu from "./components/HomeMenu";
+import TattichePage from "./components/TattichePage";
 
 const TABS = [
   { key: "mischia-sinistra", icon: "🏉", label: "Mischia", dir: "← Sin." },
@@ -110,15 +111,7 @@ export default function App() {
         </div>
       )}
 
-      {view === "tattiche" && (
-        <div className="app-inner">
-          <div className="coming-soon">
-            <div className="coming-soon-icon">📋</div>
-            <div className="coming-soon-title">Tattiche</div>
-            <div className="coming-soon-text">In preparazione</div>
-          </div>
-        </div>
-      )}
+      {view === "tattiche" && <TattichePage />}
     </div>
   );
 }
