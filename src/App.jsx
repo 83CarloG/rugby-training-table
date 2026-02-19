@@ -12,6 +12,7 @@ const TABS = [
   { key: "mischia-destra",   icon: "🏉", label: "Mischia", dir: "← Sx"   },
   { key: "touche-sinistra",  icon: "🤲", label: "Touche",  dir: "Dx →" },
   { key: "touche-destra",    icon: "🤲", label: "Touche",  dir: "← Sx"   },
+  { key: "giocata-rossa",    icon: "🔴", label: "Giocata", dir: "Rossa"  },
 ].map(t => ({ ...t, available: scenarios[t.key].phases.length > 0 }));
 
 export default function App() {

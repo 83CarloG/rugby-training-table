@@ -48,6 +48,12 @@ export default function FieldView({ idx, scenario }) {
 
   return (
     <Field w={scenario.fw} h={scenario.fh} gl={ph.gl}>
+      {ph.callout && (
+        <>
+          <rect x={0} y={0} width={scenario.fw} height={82} fill="rgba(0,0,0,0.22)" />
+          <text x={scenario.fw / 2} y={62} textAnchor="middle" fill="#ef4444" fontSize={86} fontWeight="900" fontFamily="'JetBrains Mono',monospace" opacity={0.92} letterSpacing={10}>{ph.callout}</text>
+        </>
+      )}
       {ph.pods?.map((p, i) => (
         <ellipse key={`p${i}`} cx={p.cx} cy={p.cy} rx={p.rx} ry={p.ry} fill="none" stroke={p.c} strokeWidth={0.8} strokeDasharray="4 3" opacity={0.18} />
       ))}
