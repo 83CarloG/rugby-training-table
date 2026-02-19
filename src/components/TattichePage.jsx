@@ -12,19 +12,19 @@ export default function TattichePage() {
         <div className="tac-field-bar">◄ MISCHIA · · · · · LARGO ►</div>
         <div className="tac-cols">
           <div className="tac-col">
-            <div className="tac-col-tag tac-tag--gray">Mischia</div>
-            <div className="tac-col-players">3 – 5 – 8</div>
-            <div className="tac-col-desc">Fonte del pallone</div>
-          </div>
-          <div className="tac-col">
             <div className="tac-col-tag tac-tag--red">1° Pod</div>
-            <div className="tac-col-players">2 – 4 – 6</div>
+            <div className="tac-col-players">3 – 5 – 8</div>
             <div className="tac-col-desc">1° attacco vicino alla mischia</div>
           </div>
           <div className="tac-col">
             <div className="tac-col-tag tac-tag--blue">2° Pod</div>
-            <div className="tac-col-players">7 – 1</div>
+            <div className="tac-col-players">2 – 4 – 6</div>
             <div className="tac-col-desc">2° attacco più al centro</div>
+          </div>
+          <div className="tac-col">
+            <div className="tac-col-tag tac-tag--purple">3° Pod</div>
+            <div className="tac-col-players">7 – 1</div>
+            <div className="tac-col-desc">Aiuto trequarti (7 primo, 1 lo segue)</div>
           </div>
           <div className="tac-col">
             <div className="tac-col-tag tac-tag--green">Larghi</div>
@@ -48,19 +48,19 @@ export default function TattichePage() {
             <div className="tac-col-desc">Opzione esterna</div>
           </div>
           <div className="tac-col">
+            <div className="tac-col-tag tac-tag--purple">3° Pod</div>
+            <div className="tac-col-players">6 – 3</div>
+            <div className="tac-col-desc">Aiuto trequarti (6 primo, 3 lo segue)</div>
+          </div>
+          <div className="tac-col">
             <div className="tac-col-tag tac-tag--blue">2° Pod</div>
             <div className="tac-col-players">2 – 5 – 7</div>
             <div className="tac-col-desc">2° attacco più al centro</div>
           </div>
           <div className="tac-col">
             <div className="tac-col-tag tac-tag--red">1° Pod</div>
-            <div className="tac-col-players">6 – 3</div>
-            <div className="tac-col-desc">1° attacco vicino alla mischia</div>
-          </div>
-          <div className="tac-col">
-            <div className="tac-col-tag tac-tag--gray">Mischia</div>
             <div className="tac-col-players">1 – 4 – 8</div>
-            <div className="tac-col-desc">Fonte del pallone</div>
+            <div className="tac-col-desc">1° attacco vicino alla mischia</div>
           </div>
         </div>
       </section>
