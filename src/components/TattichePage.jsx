@@ -95,7 +95,7 @@ export default function TattichePage() {
             <div className="tac-giocata-header">
               <span className="tac-giocata-dot" style={{ background: "#ef4444" }} />
               <span className="tac-giocata-color" style={{ color: "#f87171" }}>ROSSO</span>
-              <span className="tac-giocata-name">Pod Corto</span>
+              <span className="tac-giocata-name">Attacco col Pod</span>
             </div>
             <div className="tac-giocata-what">Il pod corto attacca direttamente dentro. Carry corto, potente, vicino alla fonte del pallone.</div>
             <div className="tac-giocata-when-label">Quando</div>
@@ -106,7 +106,7 @@ export default function TattichePage() {
             <div className="tac-giocata-header">
               <span className="tac-giocata-dot" style={{ background: "#3b82f6" }} />
               <span className="tac-giocata-color" style={{ color: "#60a5fa" }}>BLU</span>
-              <span className="tac-giocata-name">Pod Centro</span>
+              <span className="tac-giocata-name">Pod dopo il 10</span>
             </div>
             <div className="tac-giocata-what">Il 10 attacca la linea e scarica fuori. Il pod centro porta la palla. Giocata su due tempi, più larga.</div>
             <div className="tac-giocata-when-label">Quando</div>
@@ -117,7 +117,7 @@ export default function TattichePage() {
             <div className="tac-giocata-header">
               <span className="tac-giocata-dot" style={{ background: "#22c55e" }} />
               <span className="tac-giocata-color" style={{ color: "#4ade80" }}>VERDE</span>
-              <span className="tac-giocata-name">Scudo / Ondata</span>
+              <span className="tac-giocata-name">Attacco dei trequarti (Scudo/Ondata)</span>
             </div>
             <div className="tac-giocata-what">
               <strong>Scudo</strong> — avanti davanti ai trequarti: salgono a ostruire la difesa.<br />

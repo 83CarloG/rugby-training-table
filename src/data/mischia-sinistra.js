@@ -1,7 +1,7 @@
 import { C } from "../constants";
 
 export default {
-  title: "🧭 MISCHIA A SINISTRA – SEQUENZA COMPLETA",
+  title: "🧭 MISCHIA A SINISTRA USCITA A DESTRA",
   desc: "Lancio pulito → crash → pod 1 → pod 2 → espansione → cambio senso.",
   fw: 880, fh: 900,
   phases: [
