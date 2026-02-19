@@ -8,12 +8,14 @@ import HomeMenu from "./components/HomeMenu";
 import TattichePage from "./components/TattichePage";
 
 const TABS = [
-  { key: "mischia-sinistra", icon: "🏉", label: "Mischia", dir: "Dx →" },
-  { key: "mischia-destra",   icon: "🏉", label: "Mischia", dir: "← Sx"   },
-  { key: "touche-sinistra",  icon: "🤲", label: "Touche",  dir: "Dx →" },
-  { key: "touche-destra",    icon: "🤲", label: "Touche",  dir: "← Sx"   },
-  { key: "giocata-rossa",    icon: "🔴", label: "Giocata", dir: "Rossa"  },
-].map(t => ({ ...t, available: scenarios[t.key].phases.length > 0 }));
+  { key: "mischia-sinistra", icon: "🏉", label: "Mischia", dir: "Dx →"    },
+  { key: "mischia-destra",   icon: "🏉", label: "Mischia", dir: "← Sx"    },
+  { key: "touche-sinistra",  icon: "🤲", label: "Touche",  dir: "Dx →"    },
+  { key: "touche-destra",    icon: "🤲", label: "Touche",  dir: "← Sx"    },
+  { key: "giocata-rossa",    icon: "🔴", label: "Giocata", dir: "Rossa"   },
+  { key: "calcio-attacco",   icon: "⚽", label: "Calcio",  dir: "Attacco" },
+  { key: "calcio-ricezione", icon: "⚽", label: "Calcio",  dir: "Ricezione"},
+].map(t => ({ ...t, available: scenarios[t.key].phases.length > 0 || scenarios[t.key].type === "image" }));
 
 export default function App() {
   const [view, setView] = useState("home");
@@ -41,7 +43,7 @@ export default function App() {
     return () => clearInterval(timer.current);
   }, [auto, scenario.phases.length]);
 
-  const isAvailable = scenario.phases.length > 0;
+  const isAvailable = scenario.phases.length > 0 || scenario.type === "image";
   const activeTab = TABS.find(t => t.key === activeScenario);
 
   function goBack() {
@@ -71,33 +73,41 @@ export default function App() {
             <>
               <h1 className="scenario-title">{scenario.title}</h1>
 
-              {p && p.obj && (
-                <div className="obj-bar">
-                  <span className="obj-icon">🎯</span>
-                  <span className="obj-text">{p.obj}</span>
+              {scenario.type === "image" ? (
+                <div className="image-panel">
+                  <img src={scenario.imageSrc} alt={scenario.title} className="image-panel-img" />
                 </div>
-              )}
+              ) : (
+                <>
+                  {p && p.obj && (
+                    <div className="obj-bar">
+                      <span className="obj-icon">🎯</span>
+                      <span className="obj-text">{p.obj}</span>
+                    </div>
+                  )}
 
-              <div className="field-wrap">
-                <FieldView idx={ph} scenario={scenario} />
-              </div>
+                  <div className="field-wrap">
+                    <FieldView idx={ph} scenario={scenario} />
+                  </div>
 
-              <PhaseNav
-                phases={scenario.phases}
-                currentPhase={ph}
-                onPhaseChange={(i) => { setPh(i); setAuto(false); }}
-                auto={auto}
-                onPlayToggle={() => {
-                  if (!auto) { setPh(0); setTimeout(() => setAuto(true), 80); }
-                  else setAuto(false);
-                }}
-                onReset={() => { setPh(0); setAuto(false); }}
-              />
+                  <PhaseNav
+                    phases={scenario.phases}
+                    currentPhase={ph}
+                    onPhaseChange={(i) => { setPh(i); setAuto(false); }}
+                    auto={auto}
+                    onPlayToggle={() => {
+                      if (!auto) { setPh(0); setTimeout(() => setAuto(true), 80); }
+                      else setAuto(false);
+                    }}
+                    onReset={() => { setPh(0); setAuto(false); }}
+                  />
 
-              {p && p.desc && (
-                <div className="phase-desc">
-                  <span className="phase-desc-label">Fase {ph + 1}: </span>{p.desc}
-                </div>
+                  {p && p.desc && (
+                    <div className="phase-desc">
+                      <span className="phase-desc-label">Fase {ph + 1}: </span>{p.desc}
+                    </div>
+                  )}
+                </>
               )}
             </>
           ) : (
