@@ -8,10 +8,10 @@ import HomeMenu from "./components/HomeMenu";
 import TattichePage from "./components/TattichePage";
 
 const TABS = [
-  { key: "mischia-sinistra", icon: "🏉", label: "Mischia", dir: "← Sin." },
-  { key: "mischia-destra",   icon: "🏉", label: "Mischia", dir: "Dx →"   },
-  { key: "touche-sinistra",  icon: "🤲", label: "Touche",  dir: "← Sin." },
-  { key: "touche-destra",    icon: "🤲", label: "Touche",  dir: "Dx →"   },
+  { key: "mischia-sinistra", icon: "🏉", label: "Mischia", dir: "Dx →" },
+  { key: "mischia-destra",   icon: "🏉", label: "Mischia", dir: "← Sx"   },
+  { key: "touche-sinistra",  icon: "🤲", label: "Touche",  dir: "Dx →" },
+  { key: "touche-destra",    icon: "🤲", label: "Touche",  dir: "← Sx"   },
 ].map(t => ({ ...t, available: scenarios[t.key].phases.length > 0 }));
 
 export default function App() {
