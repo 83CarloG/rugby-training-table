@@ -26,6 +26,10 @@ export default function App() {
   const [ph, setPh] = useState(0);
   const [auto, setAuto] = useState(false);
   const timer = useRef(null);
+  const touchStartX = useRef(null);
+  const touchStartXMenu = useRef(null);
+  const hintSeenRef = useRef(localStorage.getItem("swipe_hint_seen") === "1");
+  const [showHint, setShowHint] = useState(false);
 
   const scenario = scenarios[activeScenario];
   const p = scenario.phases[ph];
@@ -46,6 +50,36 @@ export default function App() {
     return () => clearInterval(timer.current);
   }, [auto, scenario.phases.length]);
 
+  // Show swipe hint once on first non-image playbook view
+  useEffect(() => {
+    if (view === "playbook" && !hintSeenRef.current && scenario.type !== "image") {
+      hintSeenRef.current = true;
+      localStorage.setItem("swipe_hint_seen", "1");
+      setShowHint(true);
+      const t = setTimeout(() => setShowHint(false), 1500);
+      return () => clearTimeout(t);
+    }
+  }, [view, activeScenario]);
+
+  const onFieldTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
+  const onFieldTouchEnd = (e) => {
+    if (auto) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(dx) < 40) return;
+    if (dx < 0) setPh(v => Math.min(v + 1, scenario.phases.length - 1));
+    else setPh(v => Math.max(v - 1, 0));
+  };
+
+  const onMenuTouchStart = (e) => { touchStartXMenu.current = e.touches[0].clientX; };
+  const onMenuTouchEnd = (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartXMenu.current;
+    if (Math.abs(dx) < 60) return;
+    const activeIdx = TABS.findIndex(t => t.key === activeScenario);
+    const dir = dx < 0 ? 1 : -1;
+    const next = TABS[activeIdx + dir];
+    if (next) { setActiveScenario(next.key); setPh(0); setAuto(false); }
+  };
+
   const isAvailable = scenario.phases.length > 0 || scenario.type === "image";
   const activeTab = TABS.find(t => t.key === activeScenario);
 
@@ -64,7 +98,9 @@ export default function App() {
           <div className="header-label">Sistema Tattico Avanti</div>
         </header>
         {view === "playbook" && (
-          <ScenarioMenu tabs={TABS} activeKey={activeScenario} onSelect={setActiveScenario} />
+          <div onTouchStart={onMenuTouchStart} onTouchEnd={onMenuTouchEnd}>
+            <ScenarioMenu tabs={TABS} activeKey={activeScenario} onSelect={setActiveScenario} />
+          </div>
         )}
       </div>
 
@@ -89,8 +125,19 @@ export default function App() {
                     </div>
                   )}
 
-                  <div className="field-wrap">
+                  <div
+                    className="field-wrap"
+                    onTouchStart={onFieldTouchStart}
+                    onTouchEnd={onFieldTouchEnd}
+                  >
                     <FieldView idx={ph} scenario={scenario} />
+                    {ph > 0 && <div className="swipe-arrow swipe-arrow--left">‹</div>}
+                    {ph < scenario.phases.length - 1 && <div className="swipe-arrow swipe-arrow--right">›</div>}
+                    {showHint && (
+                      <div className="swipe-hint">
+                        <div className="swipe-hint-hand">👆</div>
+                      </div>
+                    )}
                   </div>
 
                   <PhaseNav
