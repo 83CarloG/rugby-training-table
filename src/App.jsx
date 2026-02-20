@@ -95,7 +95,7 @@ export default function App() {
           {view !== "home" && (
             <button className="header-back" onClick={goBack}>←</button>
           )}
-          <div className="header-label">Sistema Tattico Avanti</div>
+          <div className="header-label">Sistema Tattico</div>
         </header>
         {view === "playbook" && (
           <div onTouchStart={onMenuTouchStart} onTouchEnd={onMenuTouchEnd}>

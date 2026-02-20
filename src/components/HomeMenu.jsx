@@ -1,9 +1,13 @@
+import logo from "../assets/logo_old_arn.webp";
+
 export default function HomeMenu({ onSelect }) {
   return (
     <div className="home-wrap">
       <div className="home-hero">
         <div className="home-badge">Sistema Tattico</div>
-        <h1 className="home-title">Avanti</h1>
+        <div className="home-logo-wrap">
+          <img src={logo} alt="Amatori Rugby Novara" className="home-logo" />
+        </div>
         <p className="home-sub">Scegli una sezione</p>
       </div>
 
