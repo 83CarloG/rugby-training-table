@@ -69,7 +69,7 @@
 /* ─── Scenario menu ─── */
 .scenario-menu {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(62px, 1fr));
   gap: 4px;
   padding: 6px 8px;
   max-width: 940px;
@@ -636,10 +636,38 @@
 .image-panel-img {
   width: 100%;
   max-width: 920px;
+  height: auto;
   display: block;
   margin: 0 auto;
   border-radius: 8px;
   border: 2px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Portrait mobile: rotate landscape image to fill screen height */
+@media (orientation: portrait) and (max-width: 767px) {
+  .image-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* container height = visual height of rotated image = image CSS width */
+    height: min(calc(100vw * 1870 / 1138), calc(100dvh - 210px));
+    padding: 0;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .image-panel-img {
+    /* CSS height → visual width after rotation; keep ≤ container width */
+    height: min(100vw, calc((100dvh - 210px) * 1138 / 1870));
+    width: auto;
+    max-width: none;
+    margin: 0;
+    transform: rotate(-90deg);
+    border: none;
+    border-radius: 0;
+  }
 }
 
 /* ─── Coming soon ─── */

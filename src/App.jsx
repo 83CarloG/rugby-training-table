@@ -13,7 +13,10 @@ const TABS = [
   { key: "touche-sinistra",  icon: "🤲", label: "Touche",  dir: "Dx →"    },
   { key: "touche-destra",    icon: "🤲", label: "Touche",  dir: "← Sx"    },
   { key: "giocata-rossa",    icon: "🔴", label: "Giocata", dir: "Rossa"   },
-  { key: "calcio-attacco",   icon: "⚽", label: "Calcio",  dir: "Attacco" },
+  { key: "giocata-blu",         icon: "🔵", label: "Giocata", dir: "Blu"     },
+  { key: "giocata-verde-scudo", icon: "🟢", label: "Giocata", dir: "Scudo"   },
+  { key: "giocata-verde-ondata",icon: "🟢", label: "Giocata", dir: "Ondata"  },
+  { key: "calcio-attacco",      icon: "⚽", label: "Calcio",  dir: "Attacco" },
   { key: "calcio-ricezione", icon: "⚽", label: "Calcio",  dir: "Ricezione"},
 ].map(t => ({ ...t, available: scenarios[t.key].phases.length > 0 || scenarios[t.key].type === "image" }));
 

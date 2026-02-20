@@ -67,9 +67,9 @@ export default {
       desc: "La mini unit 2-5-7 ha caricato e formato la ruck 2. Il 9 è pronto dietro. Il blocco 1-4-8 si avvicina a supporto per mantenere il possesso.",
       callout: "ROSSO",
       players: [
-        { id: 1, n: 1, x: 720, y: 606, c: C.dim  },
-        { id: 4, n: 4, x: 702, y: 602, c: C.dim  },
-        { id: 8, n: 8, x: 738, y: 604, c: C.dim  },
+        { id: 1, n: 1, x: 620, y: 606, c: C.dim  },
+        { id: 4, n: 4, x: 602, y: 602, c: C.dim  },
+        { id: 8, n: 8, x: 638, y: 604, c: C.dim  },
         { id: 9, n: 9, x: 472, y: 540, c: C.med  },
         { id: 2, n: 2, x: 492, y: 512, c: C.ruck },
         { id: 5, n: 5, x: 474, y: 508, c: C.ruck },

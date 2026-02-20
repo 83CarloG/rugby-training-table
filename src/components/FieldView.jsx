@@ -51,7 +51,7 @@ export default function FieldView({ idx, scenario }) {
       {ph.callout && (
         <>
           <rect x={0} y={0} width={scenario.fw} height={82} fill="rgba(0,0,0,0.22)" />
-          <text x={scenario.fw / 2} y={62} textAnchor="middle" fill="#ef4444" fontSize={86} fontWeight="900" fontFamily="'JetBrains Mono',monospace" opacity={0.92} letterSpacing={10}>{ph.callout}</text>
+          <text x={scenario.fw / 2} y={62} textAnchor="middle" fill={ph.calloutC || "#ef4444"} fontSize={86} fontWeight="900" fontFamily="'JetBrains Mono',monospace" opacity={0.92} letterSpacing={10}>{ph.callout}</text>
         </>
       )}
       {ph.pods?.map((p, i) => (
