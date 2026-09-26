@@ -1,4 +1,4 @@
-import { C } from "../constants";
+import { C } from "../constants.js";
 
 export default {
   title: "🧭 MISCHIA A DESTRA USCITA A SINISTRA",
@@ -151,7 +151,6 @@ export default {
         { id: 13, n: 13, x: 260, y: 660, c: C.centro },
         { id: 3,  n: 3,  x: 310, y: 700, c: C.onda },
         { id: 6,  n: 6,  x: 240, y: 695, c: C.onda },
-        { id: 120, n: 1, x: 500, y: 655, c: C.dim },
       ],
       defense: [
         { x: 800, y: 478 }, { x: 702, y: 478 }, { x: 604, y: 478 },
@@ -249,7 +248,7 @@ export default {
     { // 8 ─ RELOAD
       name: "8. 🔁 Reload — Cambio senso",
       obj: "Si torna verso lo spazio a destra",
-      desc: "Ruck esterna formata a destra. Il 9 CAMBIA SENSO: passa al Pod 1 che si è riformato VICINO alla ruck, sul lato destro. La difesa è compressa a sinistra → disallineata, stanca, in ritardo.",
+      desc: "Ruck esterna formata a sinistra. Il 9 CAMBIA SENSO: passa al Pod 1 che si è riformato VICINO alla ruck, sul lato destro. La difesa è compressa a sinistra → disallineata e in ritardo sul cambio di senso.",
       players: [
         { id: 13, n: 13, x: 170, y: 395, c: C.ruck },
         { id: 6,  n: 6,  x: 158, y: 388, c: C.ruck },

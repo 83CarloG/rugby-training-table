@@ -18,6 +18,12 @@ export default {
   "giocata-blu":          giocataBlu,
   "giocata-verde-scudo":  giocataVerdeScudo,
   "giocata-verde-ondata": giocataVerdeOndata,
-  "calcio-attacco":   { title: "Calcio Inizio — Attacco",   type: "image", imageSrc: calcioAttaccoImg,   phases: [] },
-  "calcio-ricezione": { title: "Calcio Inizio — Ricezione", type: "image", imageSrc: calcioRicezioneImg, phases: [] },
+  "calcio-attacco": {
+    title: "Calcio d'inizio — Attacco", type: "image", imageSrc: calcioAttaccoImg, phases: [],
+    description: "Schieramento per il calcio d'inizio: la maggior parte dei giocatori è in colonna sulla linea centrale; il 10 è vicino alla palla e il 15 è spostato sul lato sinistro.",
+  },
+  "calcio-ricezione": {
+    title: "Calcio d'inizio — Ricezione", type: "image", imageSrc: calcioRicezioneImg, phases: [],
+    description: "Schieramento di ricezione: i giocatori sono distribuiti nella metà sinistra del campo, con tre linee di profondità e la palla al centro.",
+  },
 };

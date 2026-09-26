@@ -1,4 +1,4 @@
-import { C } from "../constants";
+import { C } from "../constants.js";
 
 export default {
   title: "🧭 MISCHIA A SINISTRA USCITA A DESTRA",
@@ -65,7 +65,7 @@ export default {
     { // 3 ─ RUCK 1
       name: "3. Ruck 1 — Pulizia",
       obj: "Pulire velocemente la palla per attacco POD 1",
-      desc: "Il 12 è a terra. 13 e 7 puliscono: IN PIEDI, ruck CORTA. Il 9 va verso la ruck. Il Pod 1 (8-5-3) si avvicina alla rack e si prepara",
+      desc: "Il 12 è a terra. 13 e 7 puliscono: IN PIEDI, ruck CORTA. Il 9 va verso la ruck. Il Pod 1 (8-5-3) si avvicina alla ruck e si prepara.",
       players: [
         { id: 6, n: 6, x: 148, y: 748, c: C.mischia },
         { id: 8, n: 8, x: 168, y: 746, c: C.mischia },
@@ -98,7 +98,7 @@ export default {
     { // 4 ─ 🔴 POD 1
       name: "4. 🔴 Pod 1 (8▸5-3)",
       obj: "Attacco POD 1",
-      desc: "Il POD 1 si forma. Il 9 serve in corsa il POD 1 che attacca.  Il POD 2 (6-4-2) si prepara per la prossimo attacco",
+      desc: "Il POD 1 si forma. Il 9 serve in corsa il POD 1 che attacca. Il POD 2 (6-4-2) si prepara per il prossimo attacco.",
       players: [
         { id: 1, n: 1, x: 180, y: 718, c: C.mischia },
         { id: 13, n: 13, x: 395, y: 650, c: C.dim },
@@ -151,7 +151,6 @@ export default {
         { id: 13, n: 13, x: 620, y: 660, c: C.centro },
         { id: 1, n: 1, x: 570, y: 700, c: C.onda },
         { id: 7, n: 7, x: 640, y: 695, c: C.onda },
-        { id: 120, n: 1, x: 380, y: 655, c: C.dim },
       ],
       defense: [
         { x: 80, y: 478 }, { x: 178, y: 478 }, { x: 276, y: 478 },
@@ -249,7 +248,7 @@ export default {
     { // 8 ─ RELOAD
       name: "8. 🔁 Reload — Cambio senso",
       obj: "Si torna verso lo spazio a sinistra",
-      desc: "Ruck esterna formata a sinistra. Il 9 CAMBIA SENSO: passa al Pod 1 che si è riformato VICINO alla ruck, sul lato sinistro. La difesa è compressa a destra → disallineata, stanca, in ritardo.",
+      desc: "Ruck esterna formata a destra. Il 9 CAMBIA SENSO: passa al Pod 1 che si è riformato VICINO alla ruck, sul lato sinistro. La difesa è compressa a destra → disallineata e in ritardo sul cambio di senso.",
       players: [
         { id: 13, n: 13, x: 710, y: 395, c: C.ruck },
         { id: 7, n: 7, x: 722, y: 388, c: C.ruck },

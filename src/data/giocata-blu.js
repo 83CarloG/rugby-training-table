@@ -1,4 +1,4 @@
-import { C } from "../constants";
+import { C } from "../constants.js";
 
 export default {
   title: "🔵 GIOCATA BLU",
@@ -105,7 +105,7 @@ export default {
     { // 4 ─ 10 SCARICA — PUNTO D'INCONTRO
       name: "4. 10 scarica — mini-unit punto d'incontro",
       obj: "10 scarica sulla mini-unit: 1-4-8 arriva veloce e compatta — punto d'incontro!",
-      desc: "Il 10 scarica sulla mini-unit 1-4-8 che arriva già veloce e compatta. I tre avanzano come blocco, sfruttando la superiorità numerica. Il punto d'incontro è garantito: la difesa non può coprire in tempo.",
+      desc: "Il 10 scarica sulla mini-unit 1-4-8 che arriva già veloce e compatta. I tre avanzano come blocco e cercano il punto d'incontro, mentre la difesa si riallinea.",
       callout: "BLU",
       calloutC: C.pod2,
       players: [

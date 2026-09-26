@@ -1,7 +1,7 @@
 export default function TattichePage() {
   return (
     <div className="tattiche-wrap">
-      <div className="tattiche-hero">🏉 Sistema di Gioco degli Avanti</div>
+      <h1 className="tattiche-hero">🏉 Sistema di Gioco degli Avanti</h1>
 
       {/* Situazione 1 */}
       <section className="tac-section">
@@ -99,7 +99,7 @@ export default function TattichePage() {
             </div>
             <div className="tac-giocata-what">Il pod corto attacca direttamente dentro. Carry corto, potente, vicino alla fonte del pallone.</div>
             <div className="tac-giocata-when-label">Quando</div>
-            <div className="tac-giocata-when">Squadra stanca o lenta → opzione semplice e diretta. Guadagno di terreno garantito.</div>
+            <div className="tac-giocata-when">Squadra stanca o lenta → opzione semplice e diretta per cercare di guadagnare terreno.</div>
           </div>
 
           <div className="tac-giocata" style={{ borderLeftColor: "#3b82f6", background: "rgba(59,130,246,0.05)" }}>
@@ -120,7 +120,7 @@ export default function TattichePage() {
               <span className="tac-giocata-name">Attacco dei trequarti (Scudo/Ondata)</span>
             </div>
             <div className="tac-giocata-what">
-              <strong>Scudo</strong> — avanti davanti ai trequarti: salgono a ostruire la difesa.<br />
+              <strong>Scudo</strong> — avanti davanti ai trequarti: offrono linee di corsa e opzioni di passaggio.<br />
               <strong>Ondata</strong> — avanti dietro: pronti a formare un pod o aiutare i trequarti.
             </div>
             <div className="tac-giocata-when-label">Quando</div>

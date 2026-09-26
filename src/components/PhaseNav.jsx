@@ -1,44 +1,64 @@
-export default function PhaseNav({ phases, currentPhase, onPhaseChange, auto, onPlayToggle, onReset }) {
+import { useEffect, useRef } from "react";
+import { SPEEDS } from "../timeline.js";
+
+function clock(ms) {
+  const seconds = Math.floor(ms / 1000);
+  return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
+}
+
+export default function PhaseNav({ scenario, currentPhase, timeMs, playing, speed, onSeek, onPhaseChange, onPlayToggle, onReset, onSpeed }) {
+  const ended = timeMs >= scenario.totalDuration;
+  const phaseScroll = useRef(null);
+  useEffect(() => {
+    const container = phaseScroll.current;
+    const active = container?.querySelector('[aria-current="step"]');
+    if (!container || !active) return;
+    const offset = active.offsetLeft - container.offsetLeft;
+    container.scrollLeft = Math.max(0, offset - (container.clientWidth - active.clientWidth) / 2);
+  }, [currentPhase, scenario]);
   return (
-    <nav className="phase-nav">
-      <div className="phase-scroll">
+    <nav className="phase-nav" aria-label="Navigazione della giocata">
+      <div className="phase-nav-top">
+        <span>Fase {currentPhase + 1} di {scenario.phases.length}</span>
+        <span>{clock(timeMs)} / {clock(scenario.totalDuration)}</span>
+      </div>
+      <input
+        className="timeline-range"
+        type="range"
+        min="0"
+        max={scenario.totalDuration}
+        step="20"
+        value={timeMs}
+        aria-label="Posizione nella giocata"
+        onChange={event => onSeek(Number(event.target.value))}
+        style={{ "--progress": `${timeMs / scenario.totalDuration * 100}%` }}
+      />
+      <div className="phase-scroll" ref={phaseScroll}>
         <div className="phase-btns">
-          {phases.map((pp, i) => {
-            const cur = currentPhase === i, past = i < currentPhase;
-            const isR = pp.name.includes("🔴"), isB = pp.name.includes("🔵"), isRl = pp.name.includes("🔁");
-            const ac = isR ? "#ef4444" : isB ? "#3b82f6" : isRl ? "#22d3ee" : "#f59e0b";
-            return (
-              <button
-                key={i}
-                onClick={() => onPhaseChange(i)}
-                className="phase-btn"
-                style={{
-                  background: cur ? `linear-gradient(135deg,${ac},${ac}dd)` : past ? `${ac}18` : "rgba(255,255,255,0.02)",
-                  color: cur ? "#fff" : past ? ac : "rgba(255,255,255,0.25)",
-                  boxShadow: cur ? `0 2px 8px ${ac}40` : "none",
-                }}
-              >
-                <span className="phase-num" style={{ background: cur ? "rgba(0,0,0,0.2)" : "rgba(255,255,255,0.04)" }}>
-                  {i + 1}
-                </span>
-                <span className="phase-label">{pp.name.replace(/^\d+\.\s*/, '')}</span>
-              </button>
-            );
-          })}
+          {scenario.phases.map((phase, index) => (
+            <button
+              type="button"
+              key={phase.id}
+              className={`phase-chip ${index === currentPhase ? "phase-chip--active" : ""}`}
+              aria-current={index === currentPhase ? "step" : undefined}
+              onClick={() => onPhaseChange(index)}
+            >
+              <span>{index + 1}</span>
+              <small>{phase.name.replace(/^\d+\.\s*/, "")}</small>
+            </button>
+          ))}
         </div>
       </div>
-
-      <div className="controls">
-        <button onClick={onReset} className="ctrl-btn ctrl-reset">⟲ Reset</button>
-        <button
-          onClick={onPlayToggle}
-          className="ctrl-btn"
-          style={{
-            border: `1px solid ${auto ? "rgba(239,68,68,0.12)" : "rgba(34,197,94,0.08)"}`,
-            background: auto ? "rgba(239,68,68,0.06)" : "rgba(34,197,94,0.05)",
-            color: auto ? "#f87171" : "#4ade80",
-          }}
-        >{auto ? "⏸ Stop" : "▶ Play"}</button>
+      <div className="play-controls">
+        <button type="button" className="icon-control" onClick={() => onPhaseChange(Math.max(0, currentPhase - 1))} disabled={currentPhase === 0} aria-label="Fase precedente">←</button>
+        <button type="button" className="play-control" onClick={onPlayToggle} aria-label={playing ? "Metti in pausa" : ended ? "Rivedi la giocata" : "Riproduci"}>
+          {playing ? "Ⅱ Pausa" : ended ? "↻ Rivedi" : "▶ Riproduci"}
+        </button>
+        <button type="button" className="icon-control" onClick={() => onPhaseChange(Math.min(scenario.phases.length - 1, currentPhase + 1))} disabled={currentPhase === scenario.phases.length - 1} aria-label="Fase successiva">→</button>
+        <select className="speed-control" value={speed} onChange={event => onSpeed(Number(event.target.value))} aria-label="Velocità di riproduzione">
+          {SPEEDS.map(value => <option key={value} value={value}>{String(value).replace(".", ",")}×</option>)}
+        </select>
+        <button type="button" className="icon-control reset-control" onClick={onReset} aria-label="Ricomincia dall'inizio">↺</button>
       </div>
     </nav>
   );

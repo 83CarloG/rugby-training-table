@@ -1,4 +1,4 @@
-import { C } from "../constants";
+import { C } from "../constants.js";
 
 export default {
   title: "🧭 TOUCHE A DESTRA – SEQUENZA COMPLETA",
@@ -146,7 +146,7 @@ export default {
     },
     { // 5 ─  BLU — 5-6-7 ATTACCANO + AVANZANO
       name: "5. BLU — 5-6-7 Attaccano e Avanzano",
-      obj: "Ruck 2 carica dentro con la chiamata ROSSO",
+      obj: "Il pod 5-6-7 avanza nella giocata BLU",
       desc: "Il 9 serve il pod 5-6-7 (Ruck 2). Il gruppo carica DENTRO la difesa — carry basso e potente. Il 1-3-4 rimane in supporto dietro. I back tengono la posizione; il 2 e l'8 si avvicinano dietro ai back.",
       players: [
         { id: 1,  n: 1,  x: 808, y: 648, c: C.dim },

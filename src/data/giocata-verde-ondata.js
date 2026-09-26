@@ -1,4 +1,4 @@
-import { C } from "../constants";
+import { C } from "../constants.js";
 
 const VRD = "#22c55e"; // verde callout
 
@@ -43,7 +43,7 @@ export default {
     { // 2 ─ 9→10, BACK CORRONO AMPI, AVANTI IN ONDATA DIETRO
       name: "2. 9 → 10 — back ampi — avanti in ondata dietro",
       obj: "Back attaccano ampi, 6 e 3 seguono in ondata dietro di loro",
-      desc: "Il 9 lancia al 10. I back si aprono ampi verso destra. Gli avanti liberi 6 e 3 non vanno davanti — seguono DIETRO come un'ondata. Se un back viene fermato, l'ondata arriva immediata: ruck sicura e continuità garantita.",
+      desc: "Il 9 lancia al 10. I back si aprono ampi verso destra. Gli avanti liberi 6 e 3 seguono DIETRO come un'ondata, pronti a sostenere il portatore e a formare la ruck se viene fermato.",
       callout: "VERDE",
       calloutC: VRD,
       players: [

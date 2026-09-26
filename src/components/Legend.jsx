@@ -1,32 +1,20 @@
-import { C } from "../constants";
+import { C } from "../constants.js";
 
-const ITEMS = [
-  { c: C.mischia, l: "Avanti" },
-  { c: C.pod1, l: "🔴 Pod 1" },
-  { c: C.pod2, l: "🔵 Pod 2" },
-  { c: C.onda, l: "🌊 Onda (7+1)" },
-  { c: C.ruck, l: "Ruck" },
-  { c: C.med, l: "9" },
-  { c: C.backs, l: "10" },
-  { c: C.centro, l: "12-13" },
+const items = [
+  [C.mischia, "Avanti"], [C.pod1, "Pod rosso"], [C.pod2, "Pod blu"],
+  [C.ruck, "Ruck"], [C.med, "Mediano"], [C.backs, "Apertura"],
+  [C.centro, "Centri"], [C.onda, "Sostegno"], ["#653635", "Difesa"],
 ];
 
 export default function Legend() {
   return (
-    <div className="legend">
-      <div className="legend-title">Legenda</div>
+    <details className="legend">
+      <summary>Legenda del campo</summary>
       <div className="legend-items">
-        {ITEMS.map((item, i) => (
-          <div key={i} className="legend-item">
-            <div className="legend-dot" style={{ background: item.c }} />
-            <span className="legend-text">{item.l}</span>
-          </div>
-        ))}
-        <div className="legend-item">
-          <div className="legend-dot" style={{ background: "rgba(127,29,29,0.35)", border: "1px solid rgba(185,28,28,0.25)" }} />
-          <span className="legend-text">Difesa</span>
-        </div>
+        {items.map(([color, label]) => <span className="legend-item" key={label}><i style={{ background: color }} />{label}</span>)}
+        <span className="legend-item"><i className="legend-ball" />Palla</span>
+        <span className="legend-item"><i className="legend-gain" />Linea del vantaggio</span>
       </div>
-    </div>
+    </details>
   );
 }

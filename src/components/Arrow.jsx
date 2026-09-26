@@ -14,11 +14,11 @@ export default function Arrow({ from, to, c, lb, cv = 0, ds, thick, op = 1 }) {
   const lx = mx + nx * cv * 0.5, ly = my + ny * cv * 0.5 - 8;
   return (
     <g opacity={op}>
-      <path d={`M${from[0]},${from[1]} Q${qx},${qy} ${to[0]},${to[1]}`} fill="none" stroke={c} strokeWidth={thick ? 2.5 : 1.5} strokeDasharray={ds ? "4 4" : "none"} strokeLinecap="round" />
-      <polygon points={`${to[0]},${to[1]} ${to[0] - anx * 6 - any * 3},${to[1] - any * 6 + anx * 3} ${to[0] - anx * 6 + any * 3},${to[1] - any * 6 - anx * 3}`} fill={c} />
+      <path d={`M${from[0]},${from[1]} Q${qx},${qy} ${to[0]},${to[1]}`} fill="none" stroke={c} strokeWidth={thick ? 3.5 : 2.5} strokeDasharray={ds ? "6 5" : "none"} strokeLinecap="round" />
+      <polygon points={`${to[0]},${to[1]} ${to[0] - anx * 9 - any * 4},${to[1] - any * 9 + anx * 4} ${to[0] - anx * 9 + any * 4},${to[1] - any * 9 - anx * 4}`} fill={c} />
       {lb && (<>
-        <text x={lx} y={ly} textAnchor="middle" fill="#000" fontSize={6.5} fontWeight="700" fontFamily="'JetBrains Mono',monospace" stroke="rgba(0,0,0,0.7)" strokeWidth={2.5} paintOrder="stroke">{lb}</text>
-        <text x={lx} y={ly} textAnchor="middle" fill={c} fontSize={6.5} fontWeight="700" fontFamily="'JetBrains Mono',monospace">{lb}</text>
+        <text x={lx} y={ly} textAnchor="middle" fill="#000" fontSize={11} fontWeight="800" fontFamily="system-ui,sans-serif" stroke="rgba(0,0,0,0.8)" strokeWidth={3} paintOrder="stroke">{lb}</text>
+        <text x={lx} y={ly} textAnchor="middle" fill={c} fontSize={11} fontWeight="800" fontFamily="system-ui,sans-serif">{lb}</text>
       </>)}
     </g>
   );

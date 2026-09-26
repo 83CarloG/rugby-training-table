@@ -1,4 +1,4 @@
-import { C } from "../constants";
+import { C } from "../constants.js";
 
 const VRD = "#22c55e"; // verde callout
 
@@ -78,7 +78,7 @@ export default {
     { // 3 ─ BACK AMPI DIETRO LO SCUDO — OVERLAP
       name: "3. Back ampi dietro lo scudo — OVERLAP!",
       obj: "Back corrono liberi dietro lo scudo — superiorità numerica!",
-      desc: "Il 10 lancia ampio. I back 12-13-14 corrono liberi dietro lo schermo creato da 6 e 3, che obbligano i difensori a deviare e aprono il corridoio. Il 14 riceve con un uomo in più: overlap garantito.",
+      desc: "Il 10 lancia ampio. I back 12-13-14 corrono dietro le linee di sostegno di 6 e 3. Il 14 cerca spazio esterno in base alla scelta della difesa.",
       callout: "VERDE",
       calloutC: VRD,
       players: [

@@ -1,42 +1,31 @@
-# CLAUDE.md
+# ARN Sistema Tattico
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Playbook React/Vite per studiare schemi di rugby da smartphone, tablet e desktop. Il progetto è client only: non ci sono account, backend o editor degli schemi.
 
-## Commands
+## Comandi
 
 ```bash
-npm install       # Install dependencies
-npm run dev       # Start dev server (http://localhost:5173)
-npm run build     # Production build to dist/
+npm ci
+npm run dev
+npm test
+npm run build
 ```
 
-No test or lint scripts are configured.
+I test usano `node:test`; la build produce `dist/`. Tutti gli otto scenari animati e le 43 fasi devono superare la validazione dei dati.
 
-## Architecture
+## Organizzazione
 
-Single-page React app built with Vite. All application logic lives in `src/App.jsx` (~500 lines). There is no routing, state management library, or backend.
+- `src/data/*.js`: posizioni, difesa, frecce e testi originali di ogni fase.
+- `src/data/timeline-meta.js`: percorso della palla per ciascuna fase, nell'ordine dei giocatori che la toccano.
+- `src/timeline.js`: prepara le fasi con durata, keyframe ed eventi; valida i dati e campiona giocatori, difensori e palla a un istante preciso.
+- `src/playback.js`: reducer per scenario, tempo, velocità, pausa, selezione e vista del campo.
+- `src/App.jsx`: UI, animazione `requestAnimationFrame`, scelta degli schemi e schede giocatore.
+- `src/components/FieldView.jsx`: rendering SVG e gesti di trascinamento/zoom.
 
-### Key components (all in App.jsx)
+Il tempo di riproduzione è unico per l'intero scenario. Un salto a una fase parte dal fotogramma visibile, riproduce la fase scelta e si ferma sul suo ultimo fotogramma; il cambio scenario azzera il tempo nello stesso aggiornamento di stato. La modalità movimento ridotto mostra il fotogramma finale di ogni fase e rispetta la preferenza del sistema, con un controllo manuale nella UI.
 
-- **`Field`** — SVG rugby field background with grass stripes, touch lines, and goal lines (880×900px viewBox)
-- **`Pl`** (Player) — Renders a player as a numbered circle; supports ghost/transparent state for movement trails
-- **`Df`** (Defense) — Row of 9 semi-transparent defender circles across the field width
-- **`Arrow`** — Quadratic bezier curve with arrowhead, used to show ball movement paths
-- **`FV`** (Field View) — Animation controller: interpolates player positions between phases using `requestAnimationFrame` with ease-in-out easing over 1.2s transitions
+## Aggiornare una giocata
 
-### Data structure
+Modificare le posizioni e i testi nel relativo file in `src/data/`, poi aggiornare l'array corrispondente in `timeline-meta.js` se cambia chi porta o riceve la palla. Ogni numero nel percorso deve essere presente tra i giocatori di quella fase. Eseguire `npm test` e `npm run build`, poi verificare il risultato nel browser almeno a 390 px, 768 px e su desktop.
 
-All tactical data is in the `S` object (same file). It defines an 8-phase play sequence ("MISCHIA A DESTRA – SEQUENZA COMPLETA"). Each phase contains:
-- Player positions (number, x/y coords, color)
-- Defense line positions
-- Arrow paths with labels
-- Pod ellipse markers and text annotations
-- Goal line position
-
-### Color scheme
-
-The `C` object defines semantic colors: `pod1` (red), `pod2` (blue), `larghi`, `ruck`, `med`, `backs`, `mischia`, `yellow`, `purple`.
-
-### Interaction
-
-Phase navigation buttons (1–8), Play/Pause autoplay (3.5s interval), and Reset. All text and labels are in Italian.
+Le indicazioni tecniche e il percorso della palla derivati dai testi richiedono la revisione dell'allenatore prima dell'uso ufficiale: vedi `docs/tactical-review.md`.
